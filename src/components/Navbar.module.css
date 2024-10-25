@@ -1,0 +1,41 @@
+/* Navbar.module.css */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  background-color: #4a90e2; /* Navbar background */
+  color: white;
+}
+
+.link {
+  margin: 0 15px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.link:hover {
+  color: #ffeb3b; /* Hover color for links */
+}
+
+.authLinks {
+  display: flex;
+  gap: 15px;
+}
+
+.logoutButton {
+  background-color: #e53935;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.logoutButton:hover {
+  background-color: #d32f2f; /* Darker red on hover */
+}

@@ -1,0 +1,43 @@
+/* UsersList.module.css */
+.container {
+  padding: 20px;
+}
+
+.loading {
+  font-size: 1.5rem;
+  color: #4a90e2;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.error {
+  font-size: 1.5rem;
+  color: #e53935;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.listItem {
+  margin: 15px 0;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.itemTitle {
+  font-size: 1.25rem;
+  color: #333;
+  margin: 0;
+}
+
+.itemSubtitle {
+  font-size: 1rem;
+  color: #777;
+  margin: 0;
+}

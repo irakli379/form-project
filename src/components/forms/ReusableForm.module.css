@@ -1,0 +1,87 @@
+/* ReusableForm.module.css */
+
+.formContainer {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fafafa;
+}
+
+.roleButtons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.roleButton {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.roleButton.active {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.roleButton:hover {
+  background-color: #e0e0e0;
+}
+
+.field {
+  margin-bottom: 15px;
+}
+
+.label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.workingDays {
+  margin-top: 15px;
+}
+
+.dayContainer {
+  margin-bottom: 10px;
+}
+
+.dayTitle {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.select {
+  margin-right: 10px;
+  padding: 5px;
+}
+
+.submitButton {
+  margin-top: 20px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #4a90e2;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submitButton:hover {
+  background-color: #357ab8;
+}
