@@ -1,18 +1,25 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { UseUsersContext } from "../contexts/UsersContext";
 import styles from "./Navbar.module.css";
 
 function Navbar() {
   const { isLoggedIn, setIsLoggedIn } = UseUsersContext();
+
+  const navigate = useNavigate();
+
   return (
     <>
       <nav className={styles.navbar}>
         <Link to="/" className={styles.link} key="Home">
           Home
         </Link>
-        <Link to="/users" className={styles.link} key="Users">
-          Users List
-        </Link>
+        {isLoggedIn ? (
+          <Link to="/users" className={styles.link} key="Users">
+            Dashboard
+          </Link>
+        ) : (
+          ""
+        )}
         {!isLoggedIn ? (
           <div className={styles.authLinks}>
             <Link to="/register" className={styles.link} key="Register">
@@ -26,7 +33,10 @@ function Navbar() {
           <div>
             <button
               className={styles.logoutButton}
-              onClick={() => setIsLoggedIn(false)}
+              onClick={() => {
+                setIsLoggedIn(false);
+                navigate("/");
+              }}
             >
               Log Out
             </button>

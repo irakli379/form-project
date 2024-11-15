@@ -79,7 +79,7 @@ const ReusableForm = ({ onSubmit }) => {
       alert("Courier must have at least 5 working days with 3 hours each.");
       return;
     }
-    onSubmit({ ...formData, workingDays });
+    onSubmit({ ...formData, workingDays, role: selectedRole });
     navigate("/");
   };
 

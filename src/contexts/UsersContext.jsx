@@ -9,9 +9,12 @@ export const queryClient = new QueryClient();
 const UsersContext = createContext();
 
 function UsersProvider({ children }) {
+  const [curUser, setCurUser] = useState("");
+
   function useLocalStorage(key, fallback) {
+    const item = localStorage.getItem(key);
     const [isLoggedIn, setIsLoggedIn] = useState(
-      localStorage.getItem(key) ?? fallback
+      item ? JSON.parse(item) : fallback
     );
 
     useEffect(
@@ -45,6 +48,65 @@ function UsersProvider({ children }) {
 
       return response.json();
     },
+    onSuccess: () => {
+      alert("User successfully created");
+      queryClient.invalidateQueries({
+        queryKey: ["users"],
+      });
+    },
+  });
+
+  const updateUser = useMutation({
+    mutationFn: async (user) => {
+      const response = await fetch(`${API_URL}/api/v1/users/${user._uuid}`, {
+        method: "PUT",
+        body: JSON.stringify(user),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${API_KEY}`,
+        },
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error("API Error:", errorData);
+        throw new Error("Failed to update user");
+      }
+
+      return response.json();
+    },
+    onSuccess: () => {
+      alert("User successfully updated");
+      queryClient.invalidateQueries({
+        queryKey: ["users"],
+      });
+    },
+  });
+
+  const deleteUser = useMutation({
+    mutationFn: async (user) => {
+      const response = await fetch(`${API_URL}/api/v1/users/${user._uuid}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${API_KEY}`,
+        },
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error("API Error:", errorData);
+        throw new Error("Failed to update user");
+      }
+
+      return response.json();
+    },
+    onSuccess: () => {
+      alert("User successfully deleted");
+      queryClient.invalidateQueries({
+        queryKey: ["users"],
+      });
+    },
   });
 
   const getUsers = useQuery({
@@ -68,6 +130,10 @@ function UsersProvider({ children }) {
         getUsers,
         isLoggedIn,
         setIsLoggedIn,
+        curUser,
+        setCurUser,
+        updateUser,
+        deleteUser,
       }}
     >
       {children}

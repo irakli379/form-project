@@ -9,7 +9,7 @@ function LogIn() {
   const [loginError, setLoginError] = useState(false);
 
   const navigate = useNavigate();
-  const { getUsers, setIsLoggedIn } = UseUsersContext();
+  const { getUsers, setIsLoggedIn, setCurUser } = UseUsersContext();
 
   const { data, error, isLoading } = getUsers;
 
@@ -27,6 +27,7 @@ function LogIn() {
       setLoginError(false);
       setName("");
       setEmail("");
+      setCurUser(email);
     } else {
       setLoginError(true);
       setName("");
